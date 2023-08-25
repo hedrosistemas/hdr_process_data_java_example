@@ -1,0 +1,46 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '2.7.15'
+	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+}
+
+group = 'com.hdr.IoTConsumer'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '1.8'
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+
+	flatDir {
+		dirs 'libs'
+	}
+}
+
+dependencies {
+	implementation name: 'lib'
+
+	implementation 'org.springframework.boot:spring-boot-starter-amqp'
+
+	implementation 'org.slf4j:slf4j-api:1.7.32' // SLF4J API
+	implementation 'ch.qos.logback:logback-classic:1.2.6' // Logback, includes the implementation
+
+	implementation 'com.fasterxml.jackson.core:jackson-databind:2.12.5' // json
+
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.amqp:spring-rabbit-test'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
