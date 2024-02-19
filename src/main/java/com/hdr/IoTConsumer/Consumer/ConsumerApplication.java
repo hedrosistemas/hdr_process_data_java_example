@@ -69,7 +69,7 @@ public class ConsumerApplication {
 			ProtocolVersion protocol = ProtocolVersion.V1_1_0;
 
 			// ApplicationVersion application = ApplicationVersion.getApplicationVersionFromString(data.getApplicationVersion());
-			ApplicationVersion application = ApplicationVersion.V0_1_0;
+			ApplicationVersion application = ApplicationVersion.V0;
 
 			Version version = new Version(protocol, application);
 
